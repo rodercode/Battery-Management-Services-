@@ -51,3 +51,18 @@ def get_price_per_hour():
     
     else:
         print(f"Error after GET: {get_response.status_code}")
+
+# Check car battery in percentage
+# It will display the battery power in percentage
+def get_charge():
+    # Send GET request to the server
+    get_response = requests.get(url + "charge")
+
+    # Check if the GET request was successful (status code 200)
+    if get_response.status_code == 200:
+        # Parse JSON reponse for GET
+        data = get_response.json()
+        print(data)
+    
+    else:
+        print(f"Error after GET: {get_response.status_code}")
