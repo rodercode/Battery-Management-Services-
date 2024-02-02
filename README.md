@@ -34,4 +34,4 @@ The Battery Management Service provides the following endpoints for various func
 Open your command-line interface and run the following command to clone the Book Collection repository from GitHub:
 Clone this repository to your local machine:
    ```bash
-   https://github.com/rodercode/book-collection.git
+   https://github.com/rodercode/Battery-Management-Services-.git
