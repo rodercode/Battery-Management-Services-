@@ -9,7 +9,6 @@ headers = {'Content-Type': 'application/json'}
 # Total energy consumption
 # EV battery charging in kWh
 def get_info():
-    
     # Send GET request to the server
     get_response = requests.get(url + "info")
     
@@ -22,3 +21,17 @@ def get_info():
     else:
         print(f"Error after GET: {get_response.status_code}")
 
+# Get household energy consumption
+# Start at 00:00 -> 24:00 updates every second
+def get_baseload():
+    # Send GET request to the server
+    get_response = requests.get(url + "baseload")
+
+    # Check if the GET request was successful (status code 200)
+    if get_response.status_code == 200:
+        # Parse JSON reponse for GET
+        data = get_response.json()
+        print(data)
+    
+    else:
+        print(f"Error after GET: {get_response.status_code}")
