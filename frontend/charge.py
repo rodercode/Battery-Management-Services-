@@ -1,7 +1,7 @@
-# Client side
+# Import
 import requests
 import json
-url = "http://127.0.0.1:5000/"
+from config import url
 
 # Check car battery in percentage
 # It will display the battery power in percentage

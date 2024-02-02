@@ -1,51 +1,36 @@
-# Client side
-import requests
-import json
-url = "http://127.0.0.1:5000/"
+# Imports
+from crud_operations import fetched_data
 
-# Simulation time (one day = a certain number of seconds)
-# Total energy consumption
-# EV battery charging in kWh
+# Get simulation information
 def get_info():
-    # Send GET request to the server
-    get_response = requests.get(url + "info")
+    urlPath = "info"
+    data = fetched_data(urlPath)
     
-    # Check if the GET request was successful (status code 200)
-    if get_response.status_code == 200:
-        # Parse JSON response for GET
-        data = get_response.json()
-        print(data)
-    
-    else:
-        print(f"Error after GET: {get_response.status_code}")
+    # Display data 
+    print(f"time: {data['sim_time_hour']}:{data['sim_time_min']}")
+    print(f"total energy consumption: {data['base_current_load']}Kwh")
+    print(f"Battery capacity: {data['battery_capacity_kWh']}Kwh")
 
-# Get household energy consumption
-# Start at 00:00 -> 24:00
-# 15 minutes = 1 hour
-def get_baseload():
-    # Send GET request to the server
-    get_response = requests.get(url + "baseload")
-
-    # Check if the GET request was successful (status code 200)
-    if get_response.status_code == 200:
-        # Parse JSON reponse for GET
-        data = get_response.json()
-        print(data)
-    
-    else:
-        print(f"Error after GET: {get_response.status_code}")
-
-# Information about the hourly rate at the North Pole during a day
-# Start at 00:00 during the morning
+# Get price information for electricity area 3 in Stockholm
 def get_price_per_hour():
-    # Send GET request to the server
-    get_response = requests.get(url + "priceperhour")
+    urlPath = "priceperhour"
+    data = fetched_data(urlPath)
 
-    # Check if the GET request was successful (status code 200)
-    if get_response.status_code == 200:
-        # Parse JSON reponse for GET
-        data = get_response.json()
-        print(data)
-    
-    else:
-        print(f"Error after GET: {get_response.status_code}")
+    # Display data
+    print("Price per hour: ", data)
+
+# Retrieve information about household energy consumption during a day
+def get_baseload():
+    urlPath = "baseload"
+    data = fetched_data(urlPath)
+
+    # Display data
+    print("Energy level per hour: ", data)
+
+# Get charging status of the EVs battery   
+def get_charge(): 
+    urlPath = "charge"
+    data = fetched_data(urlPath)
+
+    # Display data
+    print(f"Charging status: {data}%")
