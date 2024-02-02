@@ -1,69 +1,60 @@
 # Import
-import requests
-import json
-from config import url
+from crud_operations import fetched_data
+from crud_operations import create
 
-# Check car battery in percentage
-# It will display the battery power in percentage
-def get_charge():
-    # Send GET request to the server
-    get_response = requests.get(url + "charge")
+# Get charging status of the EVs battery   
+def get_charge(): 
+    urlPath = "charge"
+    data = fetched_data(urlPath)
 
-    # Check if the GET request was successful (status code 200)
-    if get_response.status_code == 200:
-        # Parse JSON reponse for GET
-        data = get_response.json()
-        print(data)
-    
-    else:
-        print(f"Error after GET: {get_response.status_code}")
-
-# Start the chargin session
-# Enter json body: {'charging': 'on'}
-def start_charge():
-    headers = {'Content-Type': 'application/json'}
-    
-    # JSON request payload
-    payload = {'charging': 'on'}
-    
-    # Send POST request to the server
-    response = requests.post(url + "charge", data=json.dumps(payload), headers=headers)
-    
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse JSON response and deliver dict or list to result
-        data = response.json()
-        print(data)
-
-# Stop the chargin session
-# Enter json body: {'charging': 'off'}
-def stop_charge():
-    headers = {'Content-Type': 'application/json'}
-    
-    # JSON request payload
-    payload = {'charging': 'off'}
-    
-    # Send POST request to the server
-    response = requests.post(url + "charge", data=json.dumps(payload), headers=headers)
-    
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse JSON response and deliver dict or list to result
-        data = response.json()
-        print(data)
+    # Display data
+    print(f"Charging status: {data}%")
 
 
-def discharge():
-    headers = {'Content-Type': 'application/json'}
+# Change the charging status of the EVs battery
+def charge_battery(state):
+    urlPath = "charge"
+    create(urlPath, {'charging': state})
     
-    # JSON request payload
-    payload = {'discharging': 'on'}
+    print(f"Charging status: {state}")
+
+# Discharge the EVs battery
+# Reset the battery to 20%
+def discharge_battery(state):
+    urlPath = "discharge"
+    create(urlPath, {'discharging': state})
     
-    # Send POST request to the server
-    response = requests.post(url + "discharge", data=json.dumps(payload), headers=headers)
+    print(f"Discharging status: {state}")
+
+# # Stop the chargin session
+# # Enter json body: {'charging': 'off'}
+# def stop_charge():
+#     headers = {'Content-Type': 'application/json'}
     
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse JSON response and deliver dict or list to result
-        data = response.json()
-        print(data)
+#     # JSON request payload
+#     payload = {'charging': 'off'}
+    
+#     # Send POST request to the server
+#     response = requests.post(url + "charge", data=json.dumps(payload), headers=headers)
+    
+#     # Check if the request was successful (status code 200)
+#     if response.status_code == 200:
+#         # Parse JSON response and deliver dict or list to result
+#         data = response.json()
+#         print(data)
+
+
+# def discharge():
+#     headers = {'Content-Type': 'application/json'}
+    
+#     # JSON request payload
+#     payload = {'discharging': 'on'}
+    
+#     # Send POST request to the server
+#     response = requests.post(url + "discharge", data=json.dumps(payload), headers=headers)
+    
+#     # Check if the request was successful (status code 200)
+#     if response.status_code == 200:
+#         # Parse JSON response and deliver dict or list to result
+#         data = response.json()
+#         print(data)

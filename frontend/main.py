@@ -1,7 +1,9 @@
 from info import get_info
 from info import get_price_per_hour
 from info import get_baseload
-from info import get_charge
+from charge import get_charge
+from charge import charge_battery
+from charge import discharge_battery
 
 # Get information about the simulation
 print("\nSimulation info")
@@ -19,6 +21,22 @@ get_baseload()
 # Get charging status of the EVs battery
 print("\nDisplay the status of the EVs battery")
 get_charge()
+
+# Start charging of the EVs battery
+print("\nStart charging the EVs battery")
+charge_battery("on")
+
+# Stop chargin of the EVs battery
+print("\nStop charging the Evs battery")
+charge_battery("off")
+
+# Discharge the EVs battery
+print("\nDischarge the EVs battery")
+discharge_battery("on")
+
+
+
+
 
 
 

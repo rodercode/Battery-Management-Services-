@@ -26,11 +26,3 @@ def get_baseload():
 
     # Display data
     print("Energy level per hour: ", data)
-
-# Get charging status of the EVs battery   
-def get_charge(): 
-    urlPath = "charge"
-    data = fetched_data(urlPath)
-
-    # Display data
-    print(f"Charging status: {data}%")
