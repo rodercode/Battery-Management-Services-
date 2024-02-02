@@ -6,9 +6,13 @@ Welcome to the Battery Management Service, a Python full-stack application that 
 
 
 
+
+
 ## Features
 - **Effortless Charging:** With the Battery Management Service, you can easily initiate the charging process for your electric car with just a few clicks.
 - **Real-time Energy Consumption:** Keep track of your car's energy consumption in real-time, allowing you to make informed decisions about when and how to charge your vehicle.
+
+
 
 
 ## Endpoints
@@ -27,9 +31,13 @@ The Battery Management Service provides the following endpoints for various func
   - Requires authentication.
 
 
+
+
 ## Technologies Used
 - Python
 - Flask (for the backend)
+
+
 
 
 ## Getting Started
