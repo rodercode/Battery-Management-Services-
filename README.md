@@ -12,18 +12,32 @@ Welcome to the Battery Management Service, a Python full-stack application that 
 
 ## Endpoints
 The Battery Management Service provides the following endpoints for various functionalities:
+information kring
+simuleringstid (ett dygn = ett antal sekunder)
+total energiförbrukning
+EV-batteriets laddning i kWh 
 
-- **Start Charging Session: POST /start-charging**
-  - Start a new charging session for your electric car.
-  - Requires authentication.
+- **Get Info about: /info**
+  - Simulation time (one day = a certain number of seconds)
+  - Total energy consumption
+  - EV battery charging in kWh
 
-- **Stop Charging Session: POST /stop-charging**
-    - Stop an ongoing charging session.
-    - Requires authentication.
+- **Get household energy consumption: /baseload**
+  - start at 00:00 during the morning
 
-- **Get Energy Consumption: GET /energy-consumption**
-  - Retrieve real-time energy consumption data.
-  - Requires authentication.
+- **Get Energy price per hour: /priceperhour**
+  - information about the hourly rate at the North Pole during a day
+  - start at 00:00 during the morning
+
+- **Check Car Battery Percentage: /charge**
+  - It will display the percentage of battery charge that has been accumulated.
+  
+- **Post start or stop charging session: /charge**
+  - json body: "charging":"on" -> start session
+  - json body: "chargin":"off" -> stop session
+
+- **Post discard to reset car's battery: /discharge**
+  - set battery to 20%
 <br> 
 
 ## Technologies Used
