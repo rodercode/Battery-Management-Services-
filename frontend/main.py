@@ -100,3 +100,20 @@ def stop_charge():
         data = response.json()
         print(data)
 
+
+def discharge():
+    headers = {'Content-Type': 'application/json'}
+    
+    # JSON request payload
+    payload = {'discharging': 'on'}
+    
+    # Send POST request to the server
+    response = requests.post(url + "discharge", data=json.dumps(payload), headers=headers)
+    
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse JSON response and deliver dict or list to result
+        data = response.json()
+        print(data)
+
+discharge()
