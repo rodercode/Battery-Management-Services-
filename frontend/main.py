@@ -37,6 +37,17 @@ def get_baseload():
     else:
         print(f"Error after GET: {get_response.status_code}")
 
+#information about the hourly rate at the North Pole during a day
+#start at 00:00 during the morning
+def get_price_per_hour():
+    # Send GET request to the server
+    get_response = requests.get(url + "priceperhour")
+
+    # Check if the GET request was successful (status code 200)
+    if get_response.status_code == 200:
+        # Parse JSON reponse for GET
+        data = get_response.json()
+        print(data)
     
-
-
+    else:
+        print(f"Error after GET: {get_response.status_code}")
