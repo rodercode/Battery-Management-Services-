@@ -5,9 +5,11 @@ Welcome to the Battery Management Service, a Python full-stack application that 
 ![chuttersnap-xJLsHl0hIik-unsplash](https://github.com/rodercode/Battery-Management-Services-/assets/54941923/9bdcd0a7-62ea-4d83-a44b-1ba5dcd35de4)
 
 
+
 ## Features
 - **Effortless Charging:** With the Battery Management Service, you can easily initiate the charging process for your electric car with just a few clicks.
 - **Real-time Energy Consumption:** Keep track of your car's energy consumption in real-time, allowing you to make informed decisions about when and how to charge your vehicle.
+
 
 ## Endpoints
 The Battery Management Service provides the following endpoints for various functionalities:
@@ -24,9 +26,11 @@ The Battery Management Service provides the following endpoints for various func
   - Retrieve real-time energy consumption data.
   - Requires authentication.
 
+
 ## Technologies Used
 - Python
 - Flask (for the backend)
+
 
 ## Getting Started
 
