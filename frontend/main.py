@@ -4,7 +4,6 @@ import json
 
 url = "http://127.0.0.1:5000/"
 
-
 # Simulation time (one day = a certain number of seconds)
 # Total energy consumption
 # EV battery charging in kWh
@@ -74,6 +73,23 @@ def start_charge():
     
     # JSON request payload
     payload = {'charging': 'on'}
+    
+    # Send POST request to the server
+    response = requests.post(url + "charge", data=json.dumps(payload), headers=headers)
+    
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        # Parse JSON response and deliver dict or list to result
+        data = response.json()
+        print(data)
+
+# Stop the chargin session
+# Enter json body: {'charging': 'off'}
+def stop_charge():
+    headers = {'Content-Type': 'application/json'}
+    
+    # JSON request payload
+    payload = {'charging': 'off'}
     
     # Send POST request to the server
     response = requests.post(url + "charge", data=json.dumps(payload), headers=headers)
