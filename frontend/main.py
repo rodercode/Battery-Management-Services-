@@ -22,7 +22,8 @@ def get_info():
         print(f"Error after GET: {get_response.status_code}")
 
 # Get household energy consumption
-# Start at 00:00 -> 24:00 updates every second
+# Start at 00:00 -> 24:00
+# 15 minutes = 1 hour
 def get_baseload():
     # Send GET request to the server
     get_response = requests.get(url + "baseload")
@@ -35,3 +36,7 @@ def get_baseload():
     
     else:
         print(f"Error after GET: {get_response.status_code}")
+
+    
+
+
