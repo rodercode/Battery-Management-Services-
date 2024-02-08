@@ -1,30 +1,30 @@
 import requests
 import json
-from config import url
 
+# Global variables
+url = "http://127.0.0.1:5000/"
+
+# Create reusuable function for POST function
 def create(url_path, payload):
-    headers = {'Content-Type': 'application/json'}
-        
-    # Send POST request to the server
+    headers = {'Content-Type': 'application/json'}        
     response = requests.post(url + url_path, data=json.dumps(payload), headers=headers)
     
     # Check if the request was successful (status code 200)
     if response.status_code == 200:
-        # Parse JSON response and deliver dict or list to result
-        data = response.json()
-        print(data)
-
-
-def fetched_data(url_path):
-    # Send GET request to the server
-    get_response = requests.get(url + url_path)
-
-    # Check if the GET request was successful (status code 200)
-    if get_response.status_code == 200:
-         # Parse JSON response for GET
-        data = get_response.json()
-        return data
-
+       return response.json()
+    
     else:
-        print(f"Error after GET: {get_response.status_code}")
+        print(f"Error after POST: {response.status_code}")
+
+# Get reusuable function for GET function
+def fetched_data(url_path):
+    response = requests.get(url + url_path)
+
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    
+    else:
+        print(f"Error after GET: {response.status_code}")
 
